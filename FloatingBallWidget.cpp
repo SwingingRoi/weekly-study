@@ -85,7 +85,8 @@ void FloatingBallWidget::onCpuUsageReply()
 void FloatingBallWidget::onNetworkReply()
 {
     QProcess process;
-    process.start("./getDownloadSpeed.sh");
+    QString netCard = "eth1";
+    process.start("./getDownloadSpeed.sh "+netCard);
     process.waitForFinished();
     QString output(process.readAllStandardOutput());
     downloadSpeed =  output.toDouble();
